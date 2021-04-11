@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage[left=3cm,right=3cm,
+    top=3cm,bottom=3cm,bindingoffset=0cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage{ifthen}
+\usepackage{calc}
+\usepackage{mathrsfs}
+\usepackage[dvipsnames]{xcolor}
+
+
+\title{Введение в машинное обучение}
+\author{Национальный исследовательский университет "Высшая школа экономики" \and Yandex School of Data Analysis\\\\
+Неофициальный конспект по курсу.}
+
+\begin{document}
+\maketitle
+
+\section{Метрические методы}
+
+Следующие методы, которые мы рассмотрим, будут \textbf{метрические методы}, которые используют функции \textit{расстояния} или \textit{метрики} в пространстве объектов.
+
+Исходная идея заключается в предположении, что в практических задачах часто встречаются зависимости, которые непрерывны (хотя это справедливо скорее для задач регрессии, уточнения описаны ниже):
+
+\begin{itemize}
+\item \textbf{Гипотеза непрерывности} (для регрессии):
+
+\begin{center}
+\textcolor{red}{близким объектам соответствуют близкие объекты.}
+\end{center}
+
+\item \textbf{Гипотеза компактности} (для классификации):
+
+\begin{center}
+\textcolor{red}{близкие объекты, как правило, лежат в одном классе.}
+\end{center}
+
+\end{itemize}
+
+Выглядит логично, однако, как формализовать эту <<близость>>?
+
+\begin{itemize}
+\item \textbf{Формализация понятия <<близости>>:}
+
+\qquad Задана функция расстояния $\rho : X \times X \rightarrow [0, \infty)$.
+\end{itemize}
+
+По сути эта функция от пары объектов, которая паре ставит соответствие — неотрицательное число.
+
+Часто также накладывают требование, чтобы это была метрика в пространстве объектов, то есть чтобы она была и симметричной, и выполнялось неравенство треугольника. Однако формально в методах нигде не используется предположение о том, что это метрика, поэтому, в общем-то, и функции расстояния, не являющиеся метриками, нам тоже подходят.
+\\
+
+Самым известным примером расстояния, наверное, является евклидово расстояние в признаковом пространстве:
+
+\begin{itemize}
+\item \textbf{Пример.} Евклидово пространствов и его обобщение:
+
+$$\rho(x, x_i) = \Biggr(\sum\limits_{j = 1}^n |x^j - x_i^j|^2\Biggl)^\frac{1}{2}
+\qquad\qquad\qquad
+\rho(x, x_i) = \Biggr(\textcolor{red}{w_j}
+\sum\limits_{j = 1}^n |x^j - x_i^j|^{\textcolor{red}{p}}
+\Biggl)^\frac{1}{\textcolor{red}{p}}$$
+
+$x = (x^1, \ldots, x^n)$ --- вектор признаков объекта $x$.
+
+$x_i = (x_i^1, \ldots, x_i^n)$ --- вектор признаков объекта $x_i$.
+
+\end{itemize}
+
+\end{document}
